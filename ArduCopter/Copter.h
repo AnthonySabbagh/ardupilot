@@ -69,6 +69,7 @@
 #include <AC_Sprayer/AC_Sprayer.h>          // Crop sprayer library
 #include <AP_ADSB/AP_ADSB.h>                // ADS-B RF based collision avoidance module library
 #include <AP_Proximity/AP_Proximity.h>      // ArduPilot proximity sensor library
+#include <AP_FuelLevel/AP_FuelLevel.h>      // Custom fuel sensor library
 
 // Configuration
 #include "defines.h"
@@ -260,6 +261,8 @@ private:
       return rangefinder height interpolated using inertial altitude
      */
     bool get_rangefinder_height_interpolated_cm(int32_t& ret);
+
+    AP_FuelLevel *fuel_sensor;
 
     class SurfaceTracking {
     public:
@@ -870,6 +873,8 @@ private:
     bool rangefinder_up_ok() const;
     void update_optical_flow(void);
     void compass_cal_update(void);
+    void init_fuel_sensor(void);
+    void update_fuel_level(void);
 
     // RC_Channel.cpp
     void save_trim();

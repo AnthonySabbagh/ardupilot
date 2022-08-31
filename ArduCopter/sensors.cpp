@@ -1,4 +1,5 @@
 #include "Copter.h"
+#include <stdio.h>
 
 // return barometric altitude in centimeters
 void Copter::read_barometer(void)
@@ -144,4 +145,12 @@ bool Copter::get_rangefinder_height_interpolated_cm(int32_t& ret)
     float inertial_alt_cm = inertial_nav.get_position_z_up_cm();
     ret += inertial_alt_cm - rangefinder_state.inertial_alt_cm;
     return true;
+}
+
+void Copter::init_fuel_sensor(void){
+    fuel_sensor = new AP_FuelLevel(13);
+}
+
+void Copter::update_fuel_level(void){
+    gcs().send_named_float("fuel level", g2.fuel_voltage_scalar * (fuel_sensor->get_level() + g2.fuel_voltage_offset));
 }

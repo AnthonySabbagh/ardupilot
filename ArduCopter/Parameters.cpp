@@ -1099,6 +1099,20 @@ const AP_Param::GroupInfo ParametersG2::var_info[] = {
     // @User: Advanced
     AP_GROUPINFO("SURFTRAK_MODE", 51, ParametersG2, surftrak_mode, (uint8_t)Copter::SurfaceTracking::Surface::GROUND),
 
+    // @Param: FUEL_OFFSET
+    // @DisplayName: Fuel sensor voltage offset
+    // @Description: Calibrates fuel sensor
+    // @Range: -5 5
+    // @User: Advanced
+    AP_GROUPINFO("FUEL_OFFSET", 52, ParametersG2, fuel_voltage_offset, 0),
+
+    // @Param: VOLTAGE_SCALAR
+    // @DisplayName: Fuel sensor voltage scalar
+    // @Description: Calibrates fuel sensor
+    // @Range: -32768 32768
+    // @User: Advanced
+    AP_GROUPINFO("FUEL_SCALAR", 53, ParametersG2, fuel_voltage_scalar, 1),
+
     AP_GROUPEND
 };
 

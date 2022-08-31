@@ -153,6 +153,9 @@ void Copter::init_ardupilot()
     // initialise rangefinder
     init_rangefinder();
 
+    // initial analog fuel level sensor
+    init_fuel_sensor();
+
 #if HAL_PROXIMITY_ENABLED
     // init proximity sensor
     g2.proximity.init();
